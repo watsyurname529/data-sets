@@ -7,6 +7,8 @@ miles_v_date <- ggplot(data=car_data, aes(x=Date, y=Miles)) + geom_line() + geom
 
 total_miles_v_date <- ggplot(data=car_data, aes(x=Date, y=cumsum(Miles))) + geom_line() + geom_point() + scale_x_date()
 
+miles_hist <- ggplot(data=car_data, aes(x=Miles)) + geom_bar(binwidth=5)
+
 mpg_v_date <- ggplot(data=car_data, aes(x=Date, y=Miles/Gallon)) + geom_line() + geom_point() + scale_x_date()
 
 price_v_date <- ggplot(data=car_data, aes(x=Date, y=Money/Gallon)) + geom_point() + geom_smooth(span=0.2) + scale_x_date()
