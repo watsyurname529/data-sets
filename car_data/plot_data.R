@@ -54,7 +54,9 @@ dev.off()
 
 miles_hist_stat <- ggplot(data=car_data, aes(x=Miles)) + geom_bar(binwidth=5, fill="royalblue") + 
                    geom_vline(aes(xintercept=mean(Miles)), linetype="dashed", size=0.5) +
-                   geom_vline(aes(xintercept=median(Miles)), linetype="dotted", size=0.5)
+                   geom_vline(aes(xintercept=median(Miles)), linetype="dotted", size=0.5) +
+                   geom_text(aes(x=max(Miles) * 0.1, y=40, label=paste("Mean:", format(mean(Miles), digits=4)), sep=" "), size=3) +
+                   geom_text(aes(x=max(Miles) * 0.1, y=35, label=paste("Median:", format(median(Miles), digits=4)), sep=" "), size=3)
 
 mpg_hist_stat <- ggplot(data=car_data, aes(x=Miles/Gallons)) + geom_bar(binwidth=0.5, fill="firebrick") + 
                    geom_vline(aes(xintercept=mean(Miles/Gallons)), linetype="dashed", size=0.5) +
