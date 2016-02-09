@@ -55,16 +55,26 @@ dev.off()
 miles_hist_stat <- ggplot(data=car_data, aes(x=Miles)) + geom_bar(binwidth=5, fill="royalblue") + 
                    geom_vline(aes(xintercept=mean(Miles)), linetype="dashed", size=0.5) +
                    geom_vline(aes(xintercept=median(Miles)), linetype="dotted", size=0.5) +
-                   geom_text(aes(x=max(Miles) * 0.1, y=40, label=paste("Mean:", format(mean(Miles), digits=4)), sep=" "), size=3) +
-                   geom_text(aes(x=max(Miles) * 0.1, y=35, label=paste("Median:", format(median(Miles), digits=4)), sep=" "), size=3)
+                   geom_text(aes(x=mean(Miles) - (mean(Miles) * 0.02), y=35, 
+                                 label=paste("Mean:", format(mean(Miles), digits=4)), sep=" "), size=3, angle=90) +
+                   geom_text(aes(x=median(Miles) + (mean(Miles) * 0.02), y=35, 
+                                 label=paste("Median:", format(median(Miles), digits=4)), sep=" "), size=3, angle=90)
 
 mpg_hist_stat <- ggplot(data=car_data, aes(x=Miles/Gallons)) + geom_bar(binwidth=0.5, fill="firebrick") + 
                    geom_vline(aes(xintercept=mean(Miles/Gallons)), linetype="dashed", size=0.5) +
-                   geom_vline(aes(xintercept=median(Miles/Gallons)), linetype="dotted", size=0.5)
+                   geom_vline(aes(xintercept=median(Miles/Gallons)), linetype="dotted", size=0.5) + 
+                   geom_text(aes(x=mean(Miles/Gallons) - (mean(Miles/Gallons) * 0.015), y=35, 
+                                 label=paste("Mean:", format(mean(Miles/Gallons), digits=4)), sep=" "), size=3, angle=90) +
+                   geom_text(aes(x=median(Miles/Gallons) + (mean(Miles/Gallons) * 0.015), y=35, 
+                                 label=paste("Median:", format(median(Miles/Gallons), digits=4)), sep=" "), size=3, angle=90)
 
 price_hist_stat <- ggplot(data=car_data, aes(x=Money/Gallons)) + geom_bar(binwidth=0.1, fill="purple") + 
                    geom_vline(aes(xintercept=mean(Money/Gallons)), linetype="dashed", size=0.5) +
-                   geom_vline(aes(xintercept=median(Money/Gallons)), linetype="dotted", size=0.5)
+                   geom_vline(aes(xintercept=median(Money/Gallons)), linetype="dotted", size=0.5) + 
+                   geom_text(aes(x=mean(Money/Gallons) + (mean(Money/Gallons) * 0.02), y=35, 
+                                 label=paste("Mean:", format(mean(Money/Gallons), digits=4)), sep=" "), size=3, angle=90) +
+                   geom_text(aes(x=median(Money/Gallons) - (mean(Money/Gallons) * 0.02), y=35, 
+                                 label=paste("Median:", format(median(Money/Gallons), digits=4)), sep=" "), size=3, angle=90)
 
 miles_hist_stat <- miles_hist_stat + labs(title = "Miles Histogram", y = "Count (per 5 Miles)", x = "Miles")
 mpg_hist_stat <- mpg_hist_stat + labs(title = "MPG Histogram", y = "Count (per 0.5 Gallons)", x = "MPG")
